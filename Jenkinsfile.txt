@@ -33,7 +33,7 @@ pipeline {
                    dockerImage = docker.build flightboot + ":$BUILD_NUMBER"
                   }
              }
-
+        }
 
      /*   stage('Deliver') {
             steps {
@@ -41,3 +41,4 @@ pipeline {
             }
         } */
     }
+}
