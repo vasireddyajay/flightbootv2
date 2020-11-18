@@ -3,6 +3,7 @@ pipeline {
           /*   registry = "YourDockerhubAccount/YourRepository"
             registryCredential = 'dockerhub_id' */
             dockerImage = ''
+            image_name='flightboot'
     }
     agent {
         docker {
@@ -27,9 +28,11 @@ pipeline {
             }
         }
         stage('Building our image') {
-             steps {
-                  script {
-                     dockerImage = docker.build("flightboot" + ":$BUILD_NUMBER")
+            container('docker') {
+                echo 'docker'
+                  sh "docker build -t ${image_name} ."
+                  sh "docker tag ${image_name} ${image_name}:${$BUILD_NUMBER}"
+                     //dockerImage = docker.build("flightboot" + ":$BUILD_NUMBER")
                   }
              }
         }
