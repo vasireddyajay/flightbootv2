@@ -1,6 +1,8 @@
 pipeline {
     environment {
-
+          /*   registry = "YourDockerhubAccount/YourRepository"
+            registryCredential = 'dockerhub_id' */
+            dockerImage = ''
     }
     agent {
         docker {
@@ -32,5 +34,10 @@ pipeline {
              }
         }
 
+     /*   stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+            }
+        } */
     }
 }
