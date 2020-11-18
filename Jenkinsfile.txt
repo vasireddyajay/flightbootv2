@@ -29,9 +29,7 @@ pipeline {
         }
         stage('Building our image') {
             steps {
-                script{
                    dockerImage = docker.build flightboot + ":$BUILD_NUMBER"
-                  }
              }
         }
 
