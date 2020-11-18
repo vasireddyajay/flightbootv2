@@ -28,14 +28,12 @@ pipeline {
             }
         }
         stage('Building our image') {
-            container('docker') {
-                echo 'docker'
-                  sh "docker build -t ${image_name} ."
-                  sh "docker tag ${image_name} ${image_name}:${$BUILD_NUMBER}"
-                     //dockerImage = docker.build("flightboot" + ":$BUILD_NUMBER")
+            steps {
+                script{
+                   dockerImage = docker.build flightboot" + ":$BUILD_NUMBER"
                   }
              }
-        }
+
 
      /*   stage('Deliver') {
             steps {
