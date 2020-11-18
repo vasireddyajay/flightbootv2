@@ -30,7 +30,7 @@ pipeline {
         stage('Building our image') {
             steps {
                 script{
-                   dockerImage = docker.build flightboot" + ":$BUILD_NUMBER"
+                   dockerImage = docker.build flightboot + ":$BUILD_NUMBER"
                   }
              }
 
