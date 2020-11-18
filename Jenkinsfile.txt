@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+
+    }
     agent {
         docker {
             image 'maven:3-alpine' 
@@ -21,10 +24,13 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
+        stage('Building our image') {
+             steps {
+                  script {
+                     dockerImage = docker.build("flightboot" + ":$BUILD_NUMBER")
+                  }
+             }
         }
+
     }
 }
