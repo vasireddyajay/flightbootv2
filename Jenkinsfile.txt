@@ -10,7 +10,7 @@ pipeline {
          stage('Compile against different JDKs'){
             parallel{
 
-        stage('Maven_JDK8_Image') {
+        stage('JDK8') {
            agent {
                 docker {
                    image 'maven:3.5.0-jdk-8'
@@ -29,7 +29,7 @@ pipeline {
                     }
                 }
 
-                stage('Test') {
+            stage('Test') {
                     steps {
                         sh 'mvn test'
                     }
@@ -39,10 +39,18 @@ pipeline {
                         }
                     }
                 }
+            stage('create docker image'){
+                echo 'Starting to build docker image'
+
+                script {
+                def customImage = docker.build("my-image:${env.BUILD_ID}")
+                }
+
+            }
            }
         }
 
-        stage('Maven_JDK11_Image') {
+        stage('JDK11') {
             agent {
                         docker {
                            image 'maven:3.6.0-jdk-11'
@@ -72,7 +80,7 @@ pipeline {
                             }
                         }
                    }
-                   }
+            }
 
          }
         }
