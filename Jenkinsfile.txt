@@ -7,7 +7,10 @@ pipeline {
     }
     agent none
     stages {
-        stage('MavenImage') {
+         stage('JDK8'){
+            parallel{
+
+        stage('Maven_JDK8_Image') {
            agent {
                 docker {
                    image 'maven:3.6.0-jdk-11'
@@ -16,8 +19,6 @@ pipeline {
             }
            stages{
             stage('compile & junit tests'){
-              parallel{
-                stage('Compile & Package'){
                     steps {
                         sh 'mvn -B -DskipTests clean compile'
                     }
