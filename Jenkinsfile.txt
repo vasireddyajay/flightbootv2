@@ -7,18 +7,18 @@ pipeline {
     }
     agent none
     stages {
-         stage('JDK8'){
+         stage('Compile against different JDKs'){
             parallel{
 
         stage('Maven_JDK8_Image') {
            agent {
                 docker {
-                   image 'maven:3.6.0-jdk-11'
+                   image 'maven:3.5.0-jdk-8'
                    args '-v /root/.m2:/root/.m2'
                 }
             }
            stages{
-            stage('compile & junit tests'){
+            stage('compile'){
                     steps {
                         sh 'mvn -B -DskipTests clean compile'
                     }
@@ -40,7 +40,40 @@ pipeline {
                     }
                 }
            }
-           }
+        }
+
+        stage('Maven_JDK11_Image') {
+            agent {
+                        docker {
+                           image 'maven:3.6.0-jdk-11'
+                           args '-v /root/.m2:/root/.m2'
+                        }
+                    }
+                   stages{
+                    stage('compile'){
+                            steps {
+                                sh 'mvn -B -DskipTests clean compile'
+                            }
+                            post {
+                                success {
+                                     sh 'mvn -B -DskipTests package'
+                                }
+                            }
+                        }
+
+                        stage('Test') {
+                            steps {
+                                sh 'mvn test'
+                            }
+                            post {
+                                always {
+                                junit 'target/surefire-reports/*.xml'
+                                }
+                            }
+                        }
+                   }
+                   }
+
          }
         }
     }
