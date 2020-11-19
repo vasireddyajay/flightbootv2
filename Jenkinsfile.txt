@@ -17,6 +17,8 @@ pipeline {
                 }
             }
            stages{
+            stage('build & test in parallel'){
+              parallel{
                 stage('Build'){
                     steps {
                         sh 'mvn -B -DskipTests clean package'
@@ -34,6 +36,8 @@ pipeline {
                     }
                 }
            }
+           }
+         }
         }
         stage('echo'){
             steps{
