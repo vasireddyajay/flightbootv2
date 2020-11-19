@@ -7,8 +7,6 @@ pipeline {
     }
     agent none
     stages {
-      stage('build & echo in parallel'){
-      parallel {
         stage('Build&Test') {
            agent {
                 docker {
@@ -39,12 +37,5 @@ pipeline {
            }
          }
         }
-        stage('echo'){
-            steps{
-                echo 'parallel stage'
-            }
-        }
-      }
     }
     }
- }
