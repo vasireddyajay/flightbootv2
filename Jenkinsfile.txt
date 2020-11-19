@@ -5,19 +5,26 @@ pipeline {
             dockerImage = ''
             image_name='flightboot'
     }
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    agent any
     stages {
-        stage('Build') { 
+        stage('Build') {
+            agent {
+                docker {
+                            image 'maven:3-alpine'
+                            args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Test') {
+             agent {
+                   docker {
+                             image 'maven:3-alpine'
+                             args '-v /root/.m2:/root/.m2'
+                   }
+             }
             steps {
                 sh 'mvn test'
             }
@@ -27,13 +34,20 @@ pipeline {
                 }
             }
         }
-        stage('Building our image') {
+  /*      stage('Building our image') {
+         agent {
+                 docker {
+                                    image 'maven:3-alpine'
+                                    args '-v /root/.m2:/root/.m2'
+                 }
+         }
             steps {
-                   dockerImage = docker.build flightboot + ":$BUILD_NUMBER"
+            sh docker info
+                sh dockerImage = docker.build flightboot + ":$BUILD_NUMBER"
              }
         }
 
-     /*   stage('Deliver') {
+        stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
