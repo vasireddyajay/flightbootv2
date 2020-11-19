@@ -22,7 +22,7 @@ pipeline {
                         sh 'mvn -B -DskipTests clean compile'
                     }
                     post {
-                        always {
+                        success {
                              sh 'mvn -B -DskipTests package'
                         }
                     }
