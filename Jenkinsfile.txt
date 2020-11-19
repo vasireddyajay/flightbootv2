@@ -15,11 +15,16 @@ pipeline {
                 }
             }
            stages{
-            stage('build & test'){
+            stage('compile & junit tests'){
               parallel{
-                stage('Build'){
+                stage('Compile & Package'){
                     steps {
-                        sh 'mvn -B -DskipTests clean package'
+                        sh 'mvn -B -DskipTests clean compile'
+                    }
+                    post {
+                        always {
+                             sh 'mvn -B -DskipTests package'
+                        }
                     }
                 }
 
