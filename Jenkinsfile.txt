@@ -37,9 +37,13 @@ pipeline {
                         always {
                         junit 'target/surefire-reports/*.xml'
                         }
+
                     }
                 }
             stage('create docker image'){
+            agent{
+                any
+            }
              steps {
                 echo 'Starting to build docker image'
                 script {
