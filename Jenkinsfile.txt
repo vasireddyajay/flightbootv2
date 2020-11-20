@@ -43,19 +43,20 @@ pipeline {
             agent {
             dockerfile{
                 filename "Dockerfile"
+                build my-image:${env.BUILD_ID} .
                 args "-v /tmp:/tmp"
                 }
             }
              steps {
                 echo 'Starting to build docker image'
-                script{
+              /*  script{
                 def customImage = docker.build("my-image:${env.BUILD_ID}")
-                }
+                } */
             }
            }
         }
     }
-        stage('JDK11') {
+      /*  stage('JDK11') {
             agent {
                         docker {
                            image 'maven:3.6.0-jdk-11'
@@ -85,7 +86,7 @@ pipeline {
                             }
                         }
                    }
-            }
+            } */
 
          }
         }
