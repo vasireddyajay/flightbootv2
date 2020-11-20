@@ -41,9 +41,7 @@ pipeline {
                     }
                 }
             stage('create docker image'){
-            agent any{
-
-            }
+            agent any
              steps {
                 echo 'Starting to build docker image'
                 script {
