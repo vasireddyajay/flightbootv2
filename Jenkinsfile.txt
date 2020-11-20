@@ -41,8 +41,10 @@ pipeline {
                 }
             stage('create docker image'){
             agent {
+            dockerfile{
                 filename "Dockerfile"
                 args "-v /tmp:/tmp"
+                }
             }
              steps {
                 echo 'Starting to build docker image'
