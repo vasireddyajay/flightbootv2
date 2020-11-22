@@ -50,7 +50,7 @@ pipeline {
                     args "-v /tmp:/tmp"
                     }
                 }*/
-                agent docker
+                agent any
                  steps {
                     echo 'Starting to build docker image'
                    script{
