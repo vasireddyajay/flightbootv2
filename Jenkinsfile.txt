@@ -43,13 +43,14 @@ pipeline {
         }
     }
    stage('create docker image'){
-                agent {
+               /* agent {
                 dockerfile{
                     filename "Dockerfile"
                     //build my-image:${env.BUILD_ID} .
                     args "-v /tmp:/tmp"
                     }
-                }
+                }*/
+                agent docker
                  steps {
                     echo 'Starting to build docker image'
                    script{
