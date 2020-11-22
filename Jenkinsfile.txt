@@ -10,7 +10,7 @@ pipeline {
          stage('Compile against different JDKs'){
             parallel{
 
-        stage('JDK8') {
+   /*     stage('JDK8') {
            agent {
                 docker {
                    image 'maven:3.5.0-jdk-8'
@@ -41,7 +41,7 @@ pipeline {
                 }
 
         }
-    }
+    } */
    stage('create docker image'){
                /* agent {
                 dockerfile{
