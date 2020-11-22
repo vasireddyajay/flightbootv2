@@ -10,7 +10,7 @@ pipeline {
          stage('Compile against different JDKs'){
             parallel{
 
-   /*     stage('JDK8') {
+        stage('JDK8') {
            agent {
                 docker {
                    image 'maven:3.5.0-jdk-8'
@@ -41,24 +41,9 @@ pipeline {
                 }
 
         }
-    } */
-   stage('create docker image'){
-               /* agent {
-                dockerfile{
-                    filename "Dockerfile"
-                    //build my-image:${env.BUILD_ID} .
-                    args "-v /tmp:/tmp"
-                    }
-                }*/
-                agent any
-                 steps {
-                    echo 'Starting to build docker image'
-                   script{
-                    docker.build "my-image:${env.BUILD_ID}"
-                    }
-                }
-   }
-      /*  stage('JDK11') {
+    }
+
+        stage('JDK11') {
             agent {
                         docker {
                            image 'maven:3.6.0-jdk-11'
@@ -88,9 +73,18 @@ pipeline {
                             }
                         }
                    }
-            } */
+            }
 
          }
         }
+         stage('create docker image'){
+            agent any
+              steps {
+                            echo 'Starting to build docker image'
+                           script{
+                            docker.build "my-image:${env.BUILD_ID}"
+             }
+            }
+           }
     }
     }
