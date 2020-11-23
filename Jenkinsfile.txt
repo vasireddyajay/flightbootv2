@@ -8,15 +8,14 @@ pipeline {
     agent none
     stages {
 
-         stage('Compile against different JDKs'){
-             agent {
-                                    docker {
-                                       image 'maven:3.5.0-jdk-8'
-                                       args '-v /root/.m2:/root/.m2'
-                                    }
-             }
-
+         stage('Compile against JDK8'){
            parallel{
+            agent {
+                     docker {
+                     image 'maven:3.5.0-jdk-8'
+                     args '-v /root/.m2:/root/.m2'
+                     }
+             }
 
 
             stage('compile & package'){
