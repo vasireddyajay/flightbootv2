@@ -25,6 +25,7 @@ pipeline {
                     post {
                         success {
                              sh 'mvn -B -DskipTests package'
+                             sh 'cp -r $JENKINS_HOME/workspace/Flightbootv2 /home/flightbootv2/target'
                         }
                     }
                 }
@@ -55,11 +56,11 @@ pipeline {
                             steps {
                                 sh 'mvn -B -DskipTests clean compile'
                             }
-                            post {
+                        /*    post {
                                 success {
                                      sh 'mvn -B -DskipTests package'
                                 }
-                            }
+                            }  if it compiles against jdk11, its fine*/
                         }
 
                         stage('Test') {
