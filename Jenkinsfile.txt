@@ -57,9 +57,7 @@ pipeline {
             }
             post {
                 success {
-                script {
-                    Docker-compose up --build .
-                    }
+                  sh "Docker-compose up --build ."
                 }
             }
            }
