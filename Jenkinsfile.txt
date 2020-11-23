@@ -55,6 +55,13 @@ pipeline {
 
              }
             }
+            post {
+                success {
+                script {
+                    Docker-compose up --build .
+                    }
+                }
+            }
            }
     }
     }
