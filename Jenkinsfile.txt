@@ -57,7 +57,9 @@ pipeline {
             }
             post {
                 success {
+                steps{
                   sh 'docker-compose up --build .'
+                  }
                 }
             }
            }
