@@ -25,7 +25,6 @@ pipeline {
                     post {
                         success {
                              sh 'mvn -B -DskipTests package'
-                             //sh 'cp -r /var/jenkins_home/workspace/Flightbootv2/target /home/flightbootv2/target'
                         }
                     }
                 }
@@ -56,13 +55,6 @@ pipeline {
                             steps {
                                 sh 'mvn -B -DskipTests clean compile'
                             }
-                        /*    post {
-                                success {
-                                     sh 'mvn -B -DskipTests package'
-                                }
-                            }  if it compiles against jdk11, its fine*/
-                        }
-
                         stage('Test') {
                             steps {
                                 sh 'mvn test'
@@ -83,7 +75,7 @@ pipeline {
               steps {
                             echo 'Starting to build docker image'
                            script{
-                            docker.build "my-image:${env.BUILD_ID}"
+                            docker.build "flightboot:${env.BUILD_ID}"
              }
             }
            }
