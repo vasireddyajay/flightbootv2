@@ -25,7 +25,7 @@ pipeline {
                     post {
                         success {
                              sh 'mvn -B -DskipTests package'
-                             sh 'cp -r /var/jenkins_home/workspace/Flightbootv2 /home/flightbootv2/target'
+                             sh 'cp -r /var/jenkins_home/workspace/Flightbootv2/target /home/flightbootv2/target'
                         }
                     }
                 }
