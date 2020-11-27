@@ -62,9 +62,8 @@ pipeline {
        stage('Install DockerCompose'){
           agent any
               steps {
-                 sh 'sudo -i'
-                 sh 'curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
-                 sh 'chmod +x /usr/local/bin/docker-compose'
+                 sh 'curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" \ >~/docker-compose'
+                 sh 'chmod +x ~/docker-compose'
               }
 
           }
