@@ -59,7 +59,7 @@ pipeline {
 
            }
 
-       stage('Install DockerCompose'){
+    /*   stage('Install DockerCompose'){
           agent any
               steps {
                  sh 'curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)"  > ~/docker-compose'
@@ -67,7 +67,7 @@ pipeline {
                  sh 'mv ~/docker-compose /usr/local/bin/docker-compose'
               }
 
-          }
+          } */
 
         stage('Dockercompose Up'){
            agent any
