@@ -1,6 +1,6 @@
-package com.tcs.exam.business.service;
+package com.company.app.business.service;
 
-import com.tcs.exam.data.entity.Guest;
+import com.company.app.data.entity.Guest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 

@@ -1,8 +1,7 @@
-package com.tcs.exam.business.service;
+package com.company.app.business.service;
 
-import com.tcs.exam.data.entity.Guest;
+import com.company.app.data.entity.Guest;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Map;

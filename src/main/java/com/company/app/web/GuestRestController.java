@@ -1,7 +1,7 @@
-package com.tcs.exam.web;
+package com.company.app.web;
 
-import com.tcs.exam.data.entity.Guest;
-import com.tcs.exam.data.repository.GuestRepository;
+import com.company.app.data.entity.Guest;
+import com.company.app.data.repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

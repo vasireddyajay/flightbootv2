@@ -1,4 +1,4 @@
-package com.tcs.exam.data.entity;
+package com.company.app.data.entity;
 
 import javax.persistence.*;
 

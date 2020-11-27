@@ -1,6 +1,6 @@
-package com.tcs.exam.data.repository;
+package com.company.app.data.repository;
 
-import com.tcs.exam.data.entity.Ticket;
+import com.company.app.data.entity.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

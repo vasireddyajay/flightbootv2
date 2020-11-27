@@ -1,4 +1,4 @@
-package com.tcs.exam;
+package com.company.app;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
