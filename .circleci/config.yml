@@ -23,7 +23,7 @@ jobs:
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: workspace
+          root: target
           paths:
             - target
 
