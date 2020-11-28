@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: 'maven:3.5.0-jdk-8'
     steps:
+      - checkout
       - run:
           command: mvn -B -DskipTests clean compile
 workflows:
