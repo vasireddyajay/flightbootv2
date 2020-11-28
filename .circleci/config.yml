@@ -17,12 +17,16 @@ jobs:
       - run:
           command: mvn test
   Package:
-    docker:
-      - image: 'maven:3.5.0-jdk-8'
+    executor: maven-executor
     steps:
       - checkout
       - run:
           command: mvn -B -DskipTests package
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - target
+
   create-docker-image:
     docker:
       - image: 'docker:17.05.0-ce-git'
