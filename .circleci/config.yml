@@ -32,6 +32,8 @@ jobs:
       - image: 'docker:17.05.0-ce-git'
     steps:
       - checkout
+      - attach_workspace:
+          at: /root/project/target
       - setup_remote_docker
       - run:
           command: docker build -t flightboot:latest .
