@@ -1,18 +1,17 @@
 version: 2.1
 executors:
-  my-executor:
+  maven-executor:
     docker:
       - image: 'maven:3.5.0-jdk-8'
 jobs:
   Compile:
-    executor: my-executor
+    executor: maven-executor
     steps:
       - checkout
       - run:
           command: mvn -B -DskipTests clean compile
   Test:
-    docker:
-      - image: 'maven:3.5.0-jdk-8'
+    executor: maven-executor
     steps:
       - checkout
       - run:
