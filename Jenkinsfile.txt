@@ -67,7 +67,7 @@ pipeline {
                  sh 'mv ~/docker-compose /usr/local/bin/docker-compose'
               }
 
-          } */
+          } On Windows docker machine*/
 
         stage('Dockercompose Up'){
            agent any
