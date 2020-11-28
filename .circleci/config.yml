@@ -1,8 +1,12 @@
 version: 2.1
-jobs:
-  Compile:
+executors:
+  my-executor:
     docker:
       - image: 'maven:3.5.0-jdk-8'
+    working_directory: /tmp
+jobs:
+  Compile:
+    executor: my-executor
     steps:
       - checkout
       - run:
