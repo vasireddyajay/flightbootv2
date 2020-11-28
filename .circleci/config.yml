@@ -33,7 +33,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: /root/project/target
-      - setup_remote_docker
       - run:
           command: docker build -t flightboot:latest .
 workflows:
