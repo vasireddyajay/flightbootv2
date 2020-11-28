@@ -15,8 +15,11 @@ jobs:
       - run:
           command: mvn test
   create-docker-image:
+    docker:
+      - image: 'docker:17.05.0-ce-git'
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           command: docker build -t flightboot:latest .
 workflows:
