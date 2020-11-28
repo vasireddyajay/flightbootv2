@@ -11,4 +11,4 @@ workflows:
           - image: 'maven:3.5.0-jdk-8'
         steps:
           - run:
-              command: mvn -B -DskipTests clean compile
+              command: mvn/test
