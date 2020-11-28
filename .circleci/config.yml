@@ -24,7 +24,7 @@ jobs:
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: flightbootv2
+          root:
           paths:
             - target
 
