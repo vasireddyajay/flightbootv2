@@ -17,6 +17,7 @@ jobs:
       - run:
           command: mvn test
   Package:
+    working_directory: flightbootv2
     executor: maven-executor
     steps:
       - checkout
