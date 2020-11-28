@@ -24,7 +24,9 @@ jobs:
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: /arget
+          root: /target
+          paths:
+            - flightbootv2/target
 
   create-docker-image:
     machine: true
