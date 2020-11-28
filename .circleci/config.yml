@@ -24,7 +24,7 @@ jobs:
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: /root/project
+          root: flightbootv2
           paths:
             - target
 
@@ -33,7 +33,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /root/project/target
+          at: /flightbootv2/target
       - run:
           command: docker build -t flightboot:latest .
 workflows:
