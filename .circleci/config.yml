@@ -6,6 +6,7 @@ executors:
 jobs:
   DownloadCode:
     working_directory: ~/flightboot
+    executor: maven-executor
     steps:
       - checkout
       - persist_to_workspace:
