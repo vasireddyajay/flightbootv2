@@ -29,6 +29,7 @@ jobs:
             - .
 
   create-docker-image:
+    working_directory: ~/flightboot
     machine: true
     steps:
       - attach_workspace:
