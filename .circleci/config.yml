@@ -32,7 +32,7 @@ jobs:
     machine: true
     steps:
       - attach_workspace:
-          at: /flightboot
+          at: ~/flightboot
       - checkout
       - run:
           command: docker build -t flightboot:latest .
