@@ -17,14 +17,14 @@ jobs:
       - run:
           command: mvn test
   Package:
-    working_directory: flightbootv2
+    #working_directory: flightbootv2
     executor: maven-executor
     steps:
       - checkout
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: target
+          root: flightbootv2
           paths:
             - flightbootv2/target
 
