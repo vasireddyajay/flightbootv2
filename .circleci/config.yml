@@ -14,6 +14,7 @@ jobs:
           paths:
             - .
   Compile:
+    working_directory: ~/flightboot
     executor: maven-executor
     steps:
       - attach_workspace: # Here attach the same workspace to build the image
