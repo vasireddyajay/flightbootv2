@@ -16,7 +16,8 @@ jobs:
   Compile:
     executor: maven-executor
     steps:
-      - checkout
+      - attach_workspace: # Here attach the same workspace to build the image
+          at: ~/flightboot
       - run:
           command: mvn -B -DskipTests clean compile
   Test:
@@ -50,8 +51,12 @@ workflows:
   build-and-test:
     jobs:
       - DownloadCode
-      - Compile
-      - Test
+      - Compile:
+          - requires:
+              - DownloadCode
+      - Test:
+          - requires:
+            - DownloadCode
       - Package:
           requires:
             - Compile
