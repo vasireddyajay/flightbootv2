@@ -40,13 +40,12 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - Package
-#      - Compile
-#      - Test
-      #- Package:
-       #   requires:
-        #    - Compile
-         #   - Test
+      - Compile
+      - Test
+      - Package:
+          requires:
+            - Compile
+            - Test
       - create-docker-image:
           requires:
             - Package
