@@ -17,14 +17,14 @@ jobs:
       - run:
           command: mvn test
   Package:
-    working_directory: ~/tmp
+    working_directory: ~/flightboot
     executor: maven-executor
     steps:
       - checkout
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: .
+          root: /root/flightboot
           paths:
             - .
 
@@ -33,7 +33,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /flightbootv2/target
+          at: /root/flightboot
       - run:
           command: docker build -t flightboot:latest .
 workflows:
