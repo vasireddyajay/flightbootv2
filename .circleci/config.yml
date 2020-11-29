@@ -37,10 +37,10 @@ jobs:
           at: ~/flightboot
       - run:
           command: mvn -B -DskipTests package
-#      - persist_to_workspace:
-#          root: /root/flightboot
-#          paths:
-#            - .
+      - persist_to_workspace:
+          root: /root/flightboot
+          paths:
+            - .
 
   create-docker-image:
     working_directory: ~/flightboot # Here attach the same workspace to build the image
