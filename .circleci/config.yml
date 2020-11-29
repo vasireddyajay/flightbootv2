@@ -52,10 +52,10 @@ workflows:
     jobs:
       - DownloadCode
       - Compile:
-          - requires:
-              - DownloadCode
+          requires:
+            - DownloadCode
       - Test:
-          - requires:
+          requires:
             - DownloadCode
       - Package:
           requires:
