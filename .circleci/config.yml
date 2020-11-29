@@ -32,8 +32,8 @@ jobs:
     working_directory: ~/flightboot # Here attach the same workspace to build the image
     machine: true
     steps:
-#      - attach_workspace: # Here attach the same workspace to build the image
-#          at: ~/flightboot
+      - attach_workspace: # Here attach the same workspace to build the image
+          at: ~/flightboot
       - run:
           command: docker build -t flightboot:latest .
 workflows:
