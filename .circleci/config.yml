@@ -33,7 +33,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/flightboot
-      - checkout
+#      - checkout
       - run:
           command: docker build -t flightboot:latest .
 workflows:
