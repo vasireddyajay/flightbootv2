@@ -4,7 +4,7 @@ executors:
     docker:
       - image: 'maven:3.5.0-jdk-8'
 jobs:
-  Checkout:
+  DownloadCode:
     working_directory: ~/flightboot
     steps:
       - checkout
@@ -48,7 +48,7 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - Checkout
+      - DownloadCode
       - Compile
       - Test
       - Package:
