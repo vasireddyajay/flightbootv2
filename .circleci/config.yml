@@ -17,16 +17,16 @@ jobs:
       - run:
           command: mvn test
   Package:
+    working_directory: ~/tmp
     executor: maven-executor
     steps:
       - checkout
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
-            - target/*
-            - build/*
+            - .
 
   create-docker-image:
     machine: true
