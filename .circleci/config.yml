@@ -41,8 +41,8 @@ workflows:
   build-and-test:
     jobs:
       - Package
-      - Compile
-      - Test
+#      - Compile
+#      - Test
       #- Package:
        #   requires:
         #    - Compile
