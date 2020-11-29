@@ -20,13 +20,14 @@ jobs:
     #working_directory: flightbootv2
     executor: maven-executor
     steps:
-      - checkout
+      - run: mkdir -p workspace
+      - checkout > workspace/project
       - run:
           command: mvn -B -DskipTests package
       - persist_to_workspace:
-          root: root
+          root: workspace
           paths:
-            - root/project
+            - project
 
   create-docker-image:
     machine: true
@@ -40,6 +41,7 @@ workflows:
   version: 2
   build-and-test:
     jobs:
+      - Package
       - Compile
       - Test
       - Package:
