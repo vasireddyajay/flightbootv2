@@ -42,10 +42,10 @@ workflows:
       - Package
       - Compile
       - Test
-      - Package:
-          requires:
-            - Compile
-            - Test
+      #- Package:
+       #   requires:
+        #    - Compile
+         #   - Test
       - create-docker-image:
           requires:
             - Package
