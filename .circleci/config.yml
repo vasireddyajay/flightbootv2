@@ -17,27 +17,30 @@ jobs:
     working_directory: ~/flightboot
     executor: maven-executor
     steps:
-      - attach_workspace: # Here attach the same workspace to build the image
+      - attach_workspace: # Here attach the same workspace
           at: ~/flightboot
       - run:
           command: mvn -B -DskipTests clean compile
   Test:
+    working_directory: ~/flightboot
     executor: maven-executor
     steps:
-      - checkout
+      - attach_workspace: # Here attach the same workspace
+          at: ~/flightboot
       - run:
           command: mvn test
   Package:
     working_directory: ~/flightboot
     executor: maven-executor
     steps:
-      - checkout
+      - attach_workspace: # Here attach the same workspace
+          at: ~/flightboot
       - run:
           command: mvn -B -DskipTests package
-      - persist_to_workspace:
-          root: /root/flightboot
-          paths:
-            - .
+#      - persist_to_workspace:
+#          root: /root/flightboot
+#          paths:
+#            - .
 
   create-docker-image:
     working_directory: ~/flightboot # Here attach the same workspace to build the image
