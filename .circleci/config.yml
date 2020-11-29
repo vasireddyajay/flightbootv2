@@ -4,6 +4,14 @@ executors:
     docker:
       - image: 'maven:3.5.0-jdk-8'
 jobs:
+  Checkout:
+    working_directory: ~/flightboot
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: /root/flightboot
+          paths:
+            - .
   Compile:
     executor: maven-executor
     steps:
@@ -40,6 +48,7 @@ workflows:
   version: 2
   build-and-test:
     jobs:
+      - Checkout
       - Compile
       - Test
       - Package:
